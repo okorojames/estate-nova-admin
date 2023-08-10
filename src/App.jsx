@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import AddProperty from "./pages/AddProperty";
 import MyProperties from "./pages/MyProperties";
 import { GetToTop } from "./components/on-render-checks/GetToTop";
+import PageNotFound from "./pages/page-not-found/PageNotFound";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
             <Route path="/" element={<Home />} />
             <Route path="/my-sites" element={<MyProperties />} />
             <Route path="/new-site" element={<AddProperty />} />
+            <Route path="*" element={<PageNotFound />} />
           </Routes>
         </main>
       </section>

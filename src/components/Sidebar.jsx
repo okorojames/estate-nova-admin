@@ -10,16 +10,26 @@ import { RefContext } from "../contexts/RefContext";
 
 const Sidebar = () => {
   //
-  const { side_bar_builder_link, side_bar_drop_down_links } =
-    useContext(RefContext);
+  const {
+    side_bar_builder_link,
+    side_bar_drop_down_links,
+    side_nav_box,
+    side_nav_bar_overlay,
+  } = useContext(RefContext);
 
   const show_side_bar_drop_down = () => {
     side_bar_drop_down_links.current.classList.toggle("show_side_bar_links");
   };
 
   //
+  const handle_close_side_nav_bar = () => {
+    side_nav_box.current.classList.remove("show_side_nav_box");
+    side_nav_bar_overlay.current.classList.remove("show_side_bar_nav_overlay");
+  };
+
+  //
   return (
-    <div className="side_nav_container">
+    <div className="side_nav_container" ref={side_nav_box}>
       <div className="side_nav_logo">
         <img src={logo} alt="side nav logo" />
       </div>
@@ -64,6 +74,11 @@ const Sidebar = () => {
           Settings
         </NavLink>
       </div>
+      <div
+        className="side_nav_overlay"
+        ref={side_nav_bar_overlay}
+        onClick={handle_close_side_nav_bar}
+      ></div>
     </div>
   );
 };
